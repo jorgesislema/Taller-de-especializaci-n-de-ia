@@ -630,7 +630,36 @@ La IA genera titulares escandalosos. Casi siempre, **lo que se dijo ≠ lo que p
 
 ---
 
-## 12. Cierre y puente a la Clase 2
+## 12. Práctica interactiva con Streamlit
+
+> En esta clase usamos tres aplicaciones interactivas para ver los conceptos en acción.
+
+### App 1: El Perceptrón — Jurado Interactivo
+
+[`perseptron_explicacion.py`](conseptos_tecnicos_explicados_con_streablet/01-perceptron/perseptron_explicacion.py)
+
+El alumno ajusta pesos de evidencia y ve cómo un perceptrón toma una decisión de culpable/inocente. Aprende que la IA solo hace cuentas: multiplica pesos y compara con un umbral.
+
+### App 2: Red Neuronal — Cuando los Perceptrones se Unen
+
+[`red_neuronal_explicacion.py`](conseptos_tecnicos_explicados_con_streablet/02-red-neuronal/red_neuronal_explicacion.py)
+
+Compara un perceptrón solo (línea recta) con una red neuronal (frontera curva). El alumno ve por qué necesitamos múltiples capas para resolver problemas como XOR.
+
+### App 3: Cómo Funciona ChatGPT
+
+[`como_funciona_chatgpt.py`](conseptos_tecnicos_explicados_con_streablet/03-como-aprende-ia/como_funciona_chatgpt.py)
+
+Espacio de significado (embeddings), operaciones matriciales, generación palabra por palabra con probabilidades, y demostración de alucinaciones.
+
+**Para ejecutar cualquier app:**
+```bash
+streamlit run "ruta/al/archivo.py"
+```
+
+---
+
+## 13. Cierre y puente a la Clase 2
 
 En esta clase vimos:
 
@@ -641,16 +670,15 @@ En esta clase vimos:
 
 ### Próxima clase
 
-**Clase 2: El Peligro del Antropomorfismo y Límites de Seguridad en la IA.**
+**Clase 2: La Cara Oculta de la IA — Riesgos, Ética y Ciberseguridad.**
 
-Verás por qué es tan fácil **creer** que la IA "siente" (viste el mito de LaMDA), qué riesgos reales tiene (costos, privacidad), y cómo **elegir** una IA para un proyecto sin equivocarte.
+Verás por qué es tan fácil **creer** que la IA "siente" (antropomorfismo, ELIZA, LaMDA), cómo viaja tu dato por internet, qué nunca debés subir a un prompt, y cómo protegerte con el AlterEgo.
 
 ### Tarea
 
-1. Leer la sección "Mitos y leyendas" si no la viste en clase.
-2. Hacer el [`setup-entorno.md`](setup-entorno.md) para tener todo listo.
-3. Ejecutar el notebook [`perceptron.ipynb`](perceptron.ipynb) y probar cambiar los inputs.
-4. (Opcional) Mirar uno de los recursos de [`recursos.md`](recursos.md).
+1. Ejecutar las tres apps de Streamlit (perceptron, red neuronal, ChatGPT) y experimentar.
+2. Hacer el [`setup-entorno.md`](setup-entorno.md) si no lo hiciste.
+3. (Opcional) Mirar uno de los recursos de [`recursos.md`](recursos.md).
 
 ---
 
