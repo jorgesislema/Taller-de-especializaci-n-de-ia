@@ -22,6 +22,28 @@ Y vas a tener tu computadora lista para las próximas clases.
 
 ## 2. ¿Qué es la IA?
 
+### Primero: ¿Qué es la "inteligencia"?
+
+Antes de hablar de IA, necesitamos entender qué significa "inteligencia". No es una palabra mágica. En términos simples:
+
+> **Inteligencia es la capacidad de resolver problemas, aprender de la experiencia y adaptarse a situaciones nuevas.**
+
+Cuando un bebé aprende a caminar, está siendo inteligente: prueba, se cae, ajusta, vuelve a intentar. Cuando resolvés un rompecabezas, usás inteligencia. Cuando adaptás tu ruta al trabajo porque hay tráfico, también.
+
+La inteligencia tiene varias capacidades asociadas:
+
+- **Aprender** de experiencias pasadas.
+- **Razonar** para llegar a conclusiones.
+- **Reconocer patrones** (ej: "esta cara me suena").
+- **Resolver problemas** nuevos que no viste antes.
+- **Entender lenguaje** (hablado o escrito).
+
+Ahora, la pregunta clave: *¿Puede una máquina hacer algo parecido a esto?*
+
+La respuesta corta es: **puede imitar algunas de estas capacidades, pero de forma muy distinta a como lo hace un cerebro humano.** No "piensa" como vos. Calcula. Pero los resultados pueden parecerse tanto que es difícil distinguirlos.
+
+### Entonces, ¿qué es la IA?
+
 > **La Inteligencia Artificial es un programa de computadora que aprende patrones a partir de datos para tomar decisiones o generar cosas.**
 
 Desarmemos esa frase:
@@ -30,6 +52,18 @@ Desarmemos esa frase:
 - **Aprende patrones:** no le damos reglas fijas. Le damos ejemplos y ella "nota" qué se repite.
 - **A partir de datos:** los datos son su combustible. Sin datos, no hay IA.
 - **Tomar decisiones o generar cosas:** clasificar un mail como spam, o escribir un texto nuevo.
+
+### La diferencia clave: inteligencia humana vs. inteligencia artificial
+
+| Inteligencia Humana | Inteligencia Artificial |
+|---------------------|------------------------|
+| Entiende el **significado** de las cosas | Calcula **probabilidades** sobre patrones |
+| Aprende de **pocas** experiencias | Necesita **miles o millones** de ejemplos |
+| Tiene **sentido común** (sabe que el fuego quema) | No tiene sentido común (solo ve números) |
+| Puede **razonar** sobre cosas que nunca vio | Solo funciona con lo que vio en entrenamiento |
+| Usa **intuición** y emociones | No tiene intuición ni emociones |
+
+> **Analogía:** la IA es como un estudiante que estudió para un examen con miles de preguntas de práctica. Si la pregunta es parecida a las que estudió, responde bien. Si es algo completamente nuevo, puede fallar estrepitosamente. Un humano, en cambio, puede razonar sobre lo nuevo.
 
 ### Analogía del aprendiz de panadería
 
@@ -41,19 +75,31 @@ Eso es la IA. No "entiende" el pan. **Nota patrones.**
 
 ---
 
-## 3. La IA NO es magia: es estadística determinista
+## 3. La IA NO es magia: es estadística (con componentes probabilísticos)
 
 Esta es la idea más importante del taller. Si te llevás una sola cosa hoy, que sea esta.
-
-### La IA es determinística
-
-**Determinístico** significa: si le das exactamente el mismo input, te da el mismo output. Como una calculadora: `2 + 2` siempre da `4`. No hay sorpresas. (Algunos modelos tienen un toque de azar controlado para que suenen más naturales, pero en el fondo, es matemática pura).
 
 ### La IA es estadística
 
 Cuando ChatGPT te responde, no está "pensando qué decir". Está calculando: **"dado lo que me escribiste, ¿cuál es la palabra más probable que debería ir después?"** Y luego la siguiente. Y la siguiente.
 
 Es como el autocorrector del celular, pero en esteroides. El autocorrector no "sabe" lo que querés escribir: **calcula** qué letra es más probable.
+
+La palabra clave es **probabilidad**. La IA no dice "esta es LA respuesta correcta". Dice "esta es la respuesta **más probable** dado todo lo que aprendí". Hay una diferencia enorme:
+
+- **Determinista puro:** `2 + 2 = 4`. Siempre. Sin excepciones. Es matemática exacta.
+- **Estadístico con componentes probabilísticos:** "Dado que el usuario escribió 'buenos días', la palabra más probable que sigue es '¿cómo estás?' con 73% de probabilidad, pero también podría ser '¿qué tal?' con 15%, o '¿todo bien?' con 8%".
+
+### ¿Determinista o probabilístico? Los dos
+
+En la práctica, la IA es **ambas cosas a la vez**:
+
+- **Determinista en su estructura:** la arquitectura del modelo, los pesos que aprendió, las operaciones matemáticas... todo eso es fijo. Si corrés el mismo modelo dos veces con la misma entrada, en principio obtendrás lo mismo.
+- **Probabilística en su salida:** cuando el modelo "elige" qué palabra poner, a menudo usa un proceso llamado **sampling** (muestreo), que introduce una componente de azar controlado. Por eso, si le hacés la misma pregunta dos veces, a veces te da respuestas ligeramente diferentes.
+
+> **¿Por qué tiene azar?** Porque si siempre eligiera la palabra más probable, sus respuestas serían aburridas y repetitivas. El azar controlado (llamado "temperatura" en los LLM) le da variedad y naturalidad, como un humano que no dice siempre exactamente lo mismo.
+
+> **Matiz importante:** no todos los modelos usan sampling. Algunos, en modo determinista puro (temperatura = 0), siempre eligen la opción más probable. Es como una calculadora: misma entrada, mismo resultado. Pero la mayoría de los asistentes conversacionales sí usan algo de azar para sonar más naturales.
 
 ### Ejemplo: el filtro de spam
 
@@ -71,51 +117,99 @@ Con esos números calcula una probabilidad: *"Este mail sumó 100 puntos, lo que
 
 ## 4. Línea de tiempo de la IA
 
-La IA no nació con ChatGPT. Lleva **más de 80 años** de historia. Recorrémosla rápido.
+La IA no nació con ChatGPT. Lleva **más de 80 años** de historia. Pero no fue un camino lineal: hubo avances brillantes seguidos de décadas de estancamiento. Recorrémosla.
 
 ### 1943 — McCulloch & Pitts: la primera neurona artificial
 
-Dos investigadores publicaron un paper donde describían una neurona del cerebro con matemáticas. Era una idea: *"¿y si modelamos una neurona como una función que da 0 o 1?"*.
+Dos investigadores (Warren McCulloch y Walter Pitts) publicaron un paper donde describían una neurona del cerebro con matemáticas. Era una idea revolucionaria: *"¿Y si modelamos una neurona como una función lógica que recibe señales y da 0 o 1?"*.
+
+**En qué consistía el estudio:** tomaron lo que se sabía de biología sobre cómo las neuronas del cerebro reciben señales de otras neuronas, y lo tradujeron a una fórmula matemática. Si la suma de señales superaba un umbral, la neurona "se activaba" (salía 1). Si no, se quedaba dormida (salía 0). Era un modelo simple, pero demostraba que algo parecido a una neurona biológica podía representarse con matemáticas.
+
+> **Por qué no se profundizó más:** era una idea teórica, sin forma de entrenarla con datos reales. Faltaban computadoras potentes y métodos para ajustar esos pesos automáticamente. Se quedó como una idea en papel hasta que Rosenblatt le dio vida práctica 14 años después.
 
 > **Por qué importa:** es la semilla de todo. De esta idea nace el perceptrón.
 
 ### 1950 — Alan Turing y el Test de Turing
 
-Turing hace la pregunta: *¿Pueden pensar las máquinas?*. Propone un test: si una máquina conversa por texto y no podés distinguirla de un humano, "pasa" el test.
+Turing, considerado el padre de la computación, hace la pregunta más famosa de la historia de la IA: *¿Pueden pensar las máquinas?*. Pero en lugar de quedarse filosofando, propone un test práctico: si una máquina conversa por texto y un humano no logra distinguirla de otro humano, se dice que "pasa" el test.
+
+**En qué consistía el test:** un evaluador conversa por texto con una máquina y con un humano, sin saber cuál es cuál. Si después de un rato el evaluador no puede adivinar cuál es la máquina, esta "pasa" el test. No se mide si la máquina "piensa", sino si puede **simular** una conversación humana de forma convincente.
+
+> **Por qué no se profundizó como investigación formal:** el test de Turing era una propuesta filosófica, no un algoritmo. No decía *cómo* construir esa máquina, solo *cómo* medirla. Además, las computadoras de la época eran tan lentas que intentar algo así era impráctico. La idea quedó como un desafío teórico durante décadas.
 
 > **Ojo:** el test no dice que la máquina piense. Dice que **te engaña**. Esto es clave para entender el antropomorfismo (Clase 2).
 
 ### 1956 — Dartmouth: nace el término "Inteligencia Artificial"
 
-En una reunión en Dartmouth College, John McCarthy acuñó el término **"Artificial Intelligence"**. La IA se volvía un campo de estudio formal.
+En una reunión de verano en Dartmouth College (EE.UU.), John McCarthy y otros investigadores acuñaron el término **"Artificial Intelligence"**. La IA se volvía un campo de estudio formal.
+
+**En qué consistía la conferencia:** era un grupo pequeño de matemáticos y científicos que creían que "cada aspecto del aprendizaje o cualquier otra característica de la inteligencia puede describirse con tanta precisión que se puede construir una máquina para simularlo". Era una apuesta enorme: creían que en 10 años tendrían máquinas que pensaran.
+
+> **Por qué la promesa falló:** subestimaron enormemente la complejidad del problema. Pensaron que programar "inteligencia" era cuestión de lógica y reglas. Lo que no sabían era que el cerebro humano procesa información de formas que la lógica sola no puede capturar. Faltaban décadas para tener datos y cómputo suficientes.
 
 ### 1957 — Frank Rosenblatt y el Perceptrón
 
-Rosenblatt inventó el **perceptrón**: la primera neurona artificial que podía **aprender de sus errores**.
+Rosenblatt inventó el **perceptrón**: la primera neurona artificial que podía **aprender de sus errores**. A diferencia de McCulloch & Pitts, Rosenblatt agregó algo crucial: un mecanismo para **ajustar automáticamente los pesos** cada vez que se equivocaba.
+
+**En qué consistía:** el perceptrón era un programa que recibía datos (por ejemplo, imágenes de letras), hacía una predicción ("esta es una A"), comparaba con la respuesta correcta ("no, es una B"), y si se equivocaba, ajustaba sus pesos internos un poquito. Repetido miles de veces, el perceptrón "aprendía" a clasificar correctamente.
+
+> **Por qué no se profundizó (y por qué vino el primer invierno):** en 1969, Marvin Minsky y Seymour Papert publicaron un libro demostrando que el perceptrón simple **no podía aprender XOR** (una operación lógica básica). Esto sonó como una sentencia de muerte para las redes neuronales. El gobierno y las universidades dejaron de financiar investigación en esa línea. **El problema era real, pero la solución existía:** apilar múltiples capas de perceptrones (redes multicapa). Pero esa solución tardó 20 años en ser redescubierta y aceptada.
 
 > **Por qué importa:** en el notebook vas a programar esta misma idea. Es la abuela de ChatGPT.
 
-### 1970s y 1980s — Los inviernos de la IA
+### 1970s — El primer invierno de la IA
 
-La IA prometió demasiado y entregó poco. El dinero se cortó. ¿Por qué? Porque las computadoras de la época no tenían ni la velocidad ni los datos suficientes para hacer funcionar las ideas.
+La IA prometió demasiado y entregó poco. El dinero se cortó masivamente.
 
-> **Lección:** la IA necesita **datos + cómputo**. Sin eso, no avanza.
+**¿Por qué ocurrió?** Los investigadores habían prometido máquinas inteligentes en 10 años (la "promesa de Dartmouth"). Pero las computadoras de la época eran increíblemente limitadas:
+
+- **Cómputo:** una computadora de los 70 era millones de veces más lenta que un celular actual.
+- **Datos:** no existía internet. Los datasets eran manuales, pequeños y caros.
+- **Algoritmos:** solo sabían resolver problemas con reglas lógicas escritas por humanos, lo cual no escalaba.
+
+Los gobiernos vieron que la IA no cumplía lo prometido y cortaron el financiamiento. Este período se conoce como el **"primer invierno de la IA"**.
+
+> **Lección histórica:** la idea era correcta, pero la infraestructura no existía. La IA necesita **datos + cómputo + algoritmos buenos**. Si falta uno de los tres, no avanza.
+
+### 1980s — El segundo auge y segundo invierno
+
+Volvieron los sueños con los **sistemas expertos** (programas que usaban reglas escritas por humanos para imitar decisiones de expertos). Funcionaban bien en dominios muy específicos (ej: diagnóstico médico con reglas fijas), pero eran frágiles: si el caso no estaba en las reglas, fallaban estrepitosamente.
+
+> **¿Por qué fracasaron?** Porque dependían de que humanos escribieran todas las reglas manualmente. No aprendían de datos. Era como intentar construir un GPS escritos a mano todas las rutas posibles del mundo: no escala. Cuando llegaron las primeras computadoras personales baratas, el dinero volvió a fluir hacia la IA, pero el segundo invierno llegó cuando los sistemas expertos demostraron sus limitaciones.
 
 ### 1997 — Deep Blue vence a Kasparov
 
-Una máquina de IBM le ganó al campeón mundial de ajedrez. ¿Magia? No. **Búsqueda brutal**: evaluaba millones de movimientos por segundo. No "jugaba" ajedrez como un humano.
+Una máquina de IBM le ganó al campeón mundial de ajedrez, Garry Kasparov. Fue un hito histórico: por primera vez, una máquina derrotaba a un humano en un juego considerado "de inteligencia".
+
+**En qué consistía:** Deep Blue evaluaba **200 millones de posiciones por segundo** usando pura fuerza bruta. No "jugaba" ajedrez como un humano (con intuición o estrategia emocional). Simplemente calculaba más posiciones que cualquier humano podría procesar en mil vidas.
+
+> **¿Por qué no cambió todo inmediatamente?** Porque era un sistema ultraespecializado: solo sabía jugar ajedrez. No podía hacer otra cosa. Era como tener un robot que gana en ajedrez pero no puede hacer un café. El mundo esperaba que esto fuera el inicio de algo más grande, pero faltaban 15 años para que los algoritmos y el cómputo estuvieran listos.
 
 ### 2012 — AlexNet: el renacer del deep learning
 
-Una red neuronal llamada AlexNet aplastó a todos en una competencia de reconocimiento de imágenes usando **GPUs** (tarjetas gráficas). Ahí empezó el boom moderno: datos + cómputo + algoritmos se alinearon.
+Una red neuronal llamada **AlexNet** aplastó a todos en una competencia de reconocimiento de imágenes (ImageNet) usando **GPUs** (tarjetas gráficas) para entrenar. Ahí empezó el boom moderno.
+
+**¿Qué cambió?** Tres cosas se alinearon por primera vez:
+
+1. **Datos masivos:** internet generaba millones de imágenes etiquetadas.
+2. **Cómputo potente:** las GPUs, diseñadas para videojuegos, resultaron perfectas para las operaciones matemáticas de las redes neuronales.
+3. **Algoritmos mejores:** se redescubrieron técnicas como el **backpropagation** (el método para ajustar pesos en redes multicapa, la solución al problema del perceptrón de Minsky).
+
+> **Lección:** la idea de las redes neuronales existía desde los 40. Pero sin datos ni cómputo, era una bicicleta sin ruedas. En 2012, por fin tenía las tres cosas que necesitaba.
 
 ### 2017 — Transformers: "Attention is all you need"
 
-Un paper de Google propuso una arquitectura llamada **Transformer** que procesaba texto de forma masiva y paralela. Todos los modelos modernos (GPT, Claude, Gemini) son Transformers.
+Un paper de Google propuso una arquitectura llamada **Transformer** que procesaba texto de forma masiva y paralela. Todos los modelos modernos (GPT, Claude, Gemini, Llama) son Transformers.
+
+**En qué consistía:** el Transformer introdujo un mecanismo llamado **"atención" (attention)** que le permitía a la red neuronal "mirar" todas las palabras de una frase a la vez y decidir cuáles eran más importantes entre sí. Los modelos anteriores procesaban palabra por palabra en orden, lo cual era lento y perdía contexto. El Transformer procesa todo en paralelo, como quien lee una frase completa de un vistazo.
+
+> **¿Por qué fue tan revolucionario?** Porque permitió entrenar modelos **masivamente grandes** con enormes cantidades de texto de internet. De este paper nacieron GPT (OpenAI), BERT (Google), y todos los LLMs que usamos hoy.
 
 ### 2022 — ChatGPT
 
-OpenAI lanzó ChatGPT. La IA pasó del laboratorio al celular de millones de personas.
+OpenAI lanzó ChatGPT. La IA pasó del laboratorio al celular de millones de personas. Por primera vez, la gente común podía conversar con un modelo de lenguaje y ver resultados impresionantes.
+
+> **¿Por qué fue tan impactante?** No era el modelo más potente (GPT-4 ya existía internamente). Lo revolucionario fue la **interfaz**: una caja de texto simple que cualquiera podía usar. La tecnología existía, pero nadie la había puesto al alcance de todos.
 
 ---
 
@@ -141,21 +235,101 @@ La sorpresa de mucha gente es que la IA no es nueva en su vida. **Lleva décadas
 
 ## 6. Tipos de IA
 
+No toda la IA es igual. Hay varias formas de clasificarla. Vamos a ver las más importantes.
+
 ### Por alcance: ¿qué tan "inteligente" es?
 
 | Tipo | Significado | Ejemplo |
 |------|-------------|---------|
-| **ANI** (Estrecha) | Hace una sola tarea muy bien. | Spam, FaceID, ChatGPT. |
+| **ANI** (Estrecha) | Hace una sola tarea muy bien. | Spam, FaceID, ChatGPT, GPS. |
 | **AGI** (General) | Hace cualquier tarea cognitiva como un humano. | **No existe todavía.** |
 | **ASI** (Superinteligente) | Supera al humano en absolutamente todo. | **Ciencia ficción.** |
 
 > **Importante:** todo lo que usamos hoy es **ANI**. Cuando alguien diga "la IA va a hacer X como un humano", preguntá: ¿ANI o AGI? Casi siempre la respuesta es "eso requeriría AGI, que no existe".
 
-### Por forma de aprender
+**Analogía para entender ANI vs AGI:**
 
-- **Machine Learning (ML):** el programa aprende de los datos en lugar de reglas escritas por humanos.
-  - **Supervisada:** se le muestran ejemplos con la respuesta correcta ("este mail SÍ es spam").
-  - **Por refuerzo:** aprende por prueba y error, premiando lo que funciona (ej. un bot jugando Mario Bros).
+- **ANI** es como un cuchillo de cocina: corta muy bien, pero solo eso. No puede atornillar ni pintar.
+- **AGI** sería como un ser humano que puede cocinar, atornillar, pintar, conducir y escribir poesía, todo con la misma cabeza.
+- **ASI** sería como un superhéroe que hace todo eso mejor que cualquier humano en la historia.
+
+Hoy tenemos cuchillos de cocina increíblemente afilados (ANI), pero todavía no tenemos la cabeza versátil (AGI).
+
+### Por forma de aprender: las ramas del Machine Learning
+
+El **Machine Learning (ML)** es la forma más común de IA. Es cuando el programa aprende de los datos en lugar de seguir reglas escritas por humanos. Dentro del ML, hay varias "escuelas":
+
+#### 1. Aprendizaje Supervisado
+
+**Cómo funciona:** le das al programa **miles de ejemplos con la respuesta correcta**. Él aprende el patrón y luego puede predecir respuestas para datos nuevos.
+
+**Analogía:** es como estudiar con un libro de ejercicios que tiene las respuestas al final. Hacés ejercicio, mirás si acertaste, y corrregís. Después podés hacer ejercicios nuevos sin mirar las respuestas.
+
+**Ejemplos reales:**
+- **Filtro de spam:** le mostrás miles de mails etiquetados como "spam" o "no spam". El programa aprende los patrones y clasifica mails nuevos.
+- **Reconocimiento de caras:** le mostrás miles de fotos etiquetadas "es Juan", "es María". Aprende a reconocer caras nuevas.
+- **Predicción de precios:** le das datos históricos de casas (metros cuadrados, ubicación, precio). Predice el precio de una casa nueva.
+
+**Cuándo usarlo:** cuando tenés datos etiquetados y querés que el modelo **prediga** algo (clasificar, estimar, detectar).
+
+#### 2. Aprendizaje No Supervisado
+
+**Cómo funciona:** le das al programa **datos sin etiquetas**. El programa debe encontrar patrones o agrupaciones por sí mismo, sin que nadie le diga cuál es la respuesta correcta.
+
+**Analogía:** es como entrar a un supermercado gigante sin lista de compras. Mirás los productos y empezás a agruparlos: "estos son frutas", "estos son lácteos", "estos son de limpieza". Nadie te dijo cómo agruparlos; vos lo dedujiste por similitudes.
+
+**Ejemplos reales:**
+- **Segmentación de clientes:** una tienda online agrupa compradores por comportamiento (los que compran barato, los que compran ropa de marca, los que solo compran en rebajas).
+- **Detección de anomalías:** un banco detecta transacciones raras que no se parecen a ninguna agrupación conocida (posible fraude).
+- **Recomendaciones:** Netflix agrupa películas por géneros o patrones similares que nadie definió manualmente.
+
+**Cuándo usarlo:** cuando tenés datos sin etiquetar y querés **descubrir estructura oculta** (grupos, patrones, anomalías).
+
+#### 3. Aprendizaje por Refuerzo
+
+**Cómo funciona:** el programa aprende **por prueba y error**, como un niño que aprende a caminar. Intenta algo, recibe una **recompensa** (si lo hizo bien) o un **castigo** (si lo hizo mal), y ajusta su estrategia.
+
+**Analogía:** es como entrenar a un perro. Si hace lo que querés, le das un premio. Si no, no le das nada. Con el tiempo, el perro aprende qué le da premio y qué no.
+
+**Ejemplos reales:**
+- **AlphaGo:** la IA de Google que venció al campeón mundial de Go (juego más complejo que el ajedrez). Jugó millones de partidas contra sí misma, ganando y perdiendo, hasta desarrollar estrategias que ningún humano había visto.
+- **Robots que caminan:** un robot intenta caminar, se cae (castigo), ajusta sus movimientos, vuelve a intentar. Después de miles de intentos, camina.
+- **Videojuegos:** un bot de Mario Bros que aprende a saltar obstáculos probando y equivocándose.
+
+**Cuándo usarlo:** cuando el problema requiere una **secuencia de decisiones** donde cada acción afecta la siguiente (juegos, robótica, navegación autónoma, optimización de procesos).
+
+#### 4. Deep Learning (Aprendizaje Profundo)
+
+**Qué es:** no es una "cuarta forma" de aprender, sino una **técnica dentro del ML** que usa redes neuronales con **muchas capas** (por eso "profundo").
+
+**Analogía:** imaginá una fábrica con muchos departamentos. La materia prima entra en el primer departamento, cada uno hace una transformación, y al final sale el producto terminado. Cada departamento es una "capa" de la red neuronal.
+
+**Cuándo se usa:** cuando los datos son muy complejos:
+- **Imágenes** (reconocer objetos, caras, tumores en radiografías).
+- **Audio** (reconocimiento de voz, música).
+- **Texto** (ChatGPT, traducción automática).
+- **Video** (análisis de secuencias de imágenes).
+
+**¿Por qué es tan popular?** Porque con suficientes datos y cómputo, las redes profundas superan a cualquier otro método en tareas complejas. AlexNet (2012) demostró esto con imágenes; los Transformers (2017) lo demostraron con texto.
+
+### Resumen visual de los tipos
+
+```
+INTELIGENCIA ARTIFICIAL (IA)
+├── Por alcance
+│   ├── ANI (Estrecha) — lo que usamos hoy
+│   ├── AGI (General) — no existe
+│   └── ASI (Super) — ciencia ficción
+│
+└── Por forma de aprender (Machine Learning)
+    ├── Supervisado — aprende con ejemplos etiquetados
+    ├── No supervisado — encuentra patrones solo
+    ├── Por refuerzo — aprende por prueba y error
+    └── Deep Learning — usa redes neuronales profundas
+        (técnica que puede combinarse con los anteriores)
+```
+
+> **Dato clave:** ChatGPT combina varias de estas ideas. Es **deep learning** (redes neuronales profundas) entrenado con **aprendizaje supervisado** (textos con ejemplos de conversaciones buenas) y **por refuerzo** (ajustado según las preferencias humanas). No es "una sola cosa", sino una combinación de técnicas.
 
 ---
 
@@ -214,16 +388,60 @@ Imaginá una neurona como un **jurado** tomando una decisión.
                          + sesgo (bias)
 ```
 
-### El Perceptrón (1957)
+### El Perceptrón (1957): la neurona que aprende
 
-El perceptrón es **una neurona que aprende a ajustar sus propios pesos**.
+El perceptrón es **una neurona que aprende a ajustar sus propios pesos**. Pero, ¿cómo aprende exactamente? Vamos paso a paso con un ejemplo real.
 
-1. Se le da un ejemplo: *"Para estos inputs, la respuesta debía ser 0, pero yo dije 1. Me equivoqué"*.
-2. **Ajusta los pesos** un poquito para no equivocarse la próxima vez.
-3. **Repite** esto miles de veces.
-4. Al final, la neurona **"aprendió"** el patrón.
+#### Ejemplo: decidir si salís con paraguas
 
-> **No es magia.** Es: predecir → comparar con la verdad → ajustar → repetir. Como aprender a tirar dardos: tirás, ves dónde cae, corregís la postura, tirás de nuevo.
+Imaginá que querés crear una neurona que decida si llevar paraguas o no. Los inputs son:
+
+- **x1:** ¿Está nublado? (1 = sí, 0 = no)
+- **x2:** ¿Anoche llovió? (1 = sí, 0 = no)
+
+La neurona tiene pesos iniciales **aleatorios** (por ejemplo, w1 = 0.3, w2 = 0.5) y un sesgo (bias) de 0.1.
+
+#### Paso 1: La primera predicción (adivinanza)
+
+La neurona recibe: nublado = 1, llovió = 1.
+
+Calcula: `(1 × 0.3) + (1 × 0.5) + 0.1 = 0.9`
+
+El resultado es 0.9. Como es mayor a 0.5, la neurona dice: **"¡Llevá paraguas!" (1)**.
+
+#### Paso 2: Comparar con la verdad
+
+La respuesta **real** era: NO llovería (0). La neurona se equivocó.
+
+#### Paso 3: Ajustar los pesos
+
+Aquí es donde ocurre la magia (que no es magia). La neurona hace una cuenta simple:
+
+- Se equivocó → los pesos que la llevaron a esa respuesta deben **bajar un poquito**.
+- El ajuste es proporcional al error: si se equivocó mucho, ajusta más; si se equivocó poco, ajusta menos.
+
+Después del ajuste, los pesos quedan en, por ejemplo: w1 = 0.2, w2 = 0.4.
+
+#### Paso 4: Repetir miles de veces
+
+Con cada ejemplo nuevo, la neurona repite el ciclo:
+
+```
+predecir → comparar con la verdad → ajustar pesos → repetir
+```
+
+Después de 1000 ejemplos, los pesos se estabilizan en valores que hacen que la neurona acierte la mayoría de las veces.
+
+> **Analogía del dardo:** es como aprender a tirar dardos. Tirás (predecís), ves dónde cayó (comparás), corregís la postura (ajustás), tirás de nuevo. Con práctica, cada vez acertás más.
+
+### El perceptrón como una receta con pasos
+
+Pensalo como una receta de cocina:
+
+1. **Juntá los ingredientes** (inputs): los datos que le llegan a la neurona.
+2. **Pésalos** (pesos): cuánto importa cada ingrediente. Si el ingrediente principal es la harina, su peso es alto. La sal, su peso es bajo.
+3. **Sumá todo** (producto ponderado + sesgo): mezclá todo en una碗.
+4. **¿Pasa el umbral?** (función de activación): si la mezcla tiene buen sabor (supera el umbral), el plato está listo (salida 1). Si no, hay que seguir cocinando (salida 0).
 
 ### ¿Qué puede y qué no puede el perceptrón?
 
@@ -231,7 +449,11 @@ El perceptrón es **una neurona que aprende a ajustar sus propios pesos**.
 - ✅ Aprende el **OR** (se enciende si CUALQUIERA es 1).
 - ❌ Nunca podrá aprender el **XOR** (encenderse si SOLO UNO es 1).
 
-¿Por qué? Porque el XOR **no se puede separar con una línea recta**. El perceptrón solo traza líneas rectas. Para el XOR necesitamos **redes de múltiples neuronas**.
+¿Por qué el XOR es imposible? Porque el perceptrón solo puede trazar **líneas rectas** para separar los datos. El XOR requiere una frontera curva o una combinación de líneas.
+
+> **Visualizalo así:** imaginá una mesa con botellas de colores. El perceptrón puede trazar una línea recta para separar las rojas de las azules. Pero si las rojas están en las esquinas opuestas y las azules en las otras dos esquinas (como el XOR), ninguna línea recta las separa. Necesitarías **dos líneas** (es decir, **dos neuronas** conectadas).
+
+> **La solución existed pero tardó 20 años:** apilar múltiples capas de perceptrones (redes multicapa). Esto se redescubrió en los 80 con el algoritmo de **backpropagation** (retropropagación). Es la base de todas las redes neuronales modernas.
 
 > Podés verlo **en código** en el notebook [`perceptron.ipynb`](perceptron.ipynb).
 
